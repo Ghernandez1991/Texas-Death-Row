@@ -7,4 +7,4 @@ Using BeautifulSoup, the program scrapes the Texas Department of Corrections dea
 Using ChromeDriver, the program visits each condemed mans page and pulls down his final words. Using python string manipulation, we are able to get a picture of the most common words spoken during all 600+ prisoners final moments. 
 
 
-![Alt text](image.png?raw=false "Optional Title")
+![Alt text](image.PNG?raw=true "Optional Title")
