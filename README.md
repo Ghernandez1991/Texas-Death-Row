@@ -1,5 +1,8 @@
 # Texas-Death-Row
 
+![Alt text](image/table.PNG?raw=true "Optional Title")
+
+
 The state of Texas remains the most active death row in the United States. The project stems from my interest in the criminal justice system and the application of the death penalty in Texas. 
 
 Using BeautifulSoup, the program scrapes the Texas Department of Corrections death row page and pulls down related statistics such as offender name, age and race. More specifically, I was interested in each prisoners last statement. 
