@@ -13,3 +13,7 @@ Using ChromeDriver, the program visits each condemed mans page and pulls down hi
 ![Alt text](image/most_common.PNG?raw=true "Optional Title")
 
 
+
+
+
+![Alt text](image/stats.PNG?raw=true "Optional Title")
