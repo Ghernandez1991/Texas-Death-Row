@@ -3,17 +3,20 @@ from flask import Flask, render_template, jsonify, request
 import pandas as pd 
 import os
 from Word_Scrape import DOC_Word_Scrape
+from sqlalchemy import create_engine
+from flask_sqlalchemy import SQLAlchemy
+
 app = Flask(__name__)
+db = SQLAlchemy(app)
 
 
-# Or set inline
 
 
 
 @app.route("/")
 def index():
     return render_template('index.html')
-    #return "<h1>Hello User:)</h1>"
+    
     
 
 
@@ -30,6 +33,9 @@ def scrape():
     browser = Browser("chrome", **executable_path, headless=False)
     import time
     import matplotlib.pyplot as plt
+    from sqlalchemy import create_engine
+    from sqlalchemy import inspect
+    from flask_sqlalchemy import SQLAlchemy
 
     # visit the TDOJ death row page
     death_url = 'https://www.tdcj.texas.gov/death_row/dr_executed_offenders.html'
@@ -50,10 +56,7 @@ def scrape():
 
     #read the url using pdread
     tables = pd.read_html(url5)
-    #tables
-
-
-
+   
         #we need to create lists of all the links inside the offender table in order to use beautiful soup later
     #create a list to append items to
     list_of_items = []
@@ -65,7 +68,7 @@ def scrape():
         #take the link and append it to the 
         list_of_items.append(link)
         
-        #print ("Found the URL:", a['href'])
+        
 
 
 
@@ -80,7 +83,7 @@ def scrape():
         #add the two strings together after convering i to a string
         new_list.append(new)
         #add to the new list and 
-        #print(new)
+        
 
 
     html_links=[]
@@ -165,23 +168,20 @@ def scrape():
         statements_final.append(clean)
         counter += 1
         
-    #print our list and what type it is
-    #print(statements_final)
-    #print(type(statements_final))
+    
     #convert it to string
     allstatements = str(statements_final)
-    #print
-    #print(allstatements)
+    
 
 
     #convert to string and print
     mystring = str(statements_final)
-    #print(mystring)
+    
 
     #sent entire object to beautiful soup 
     soup = BeautifulSoup(mystring)
     #get the text from the BS object
-    #print(soup.get_text())
+    
 
 
     #allstatements is our string of all final statements
@@ -238,7 +238,7 @@ def scrape():
     # input values and their respective counts. 
     most_occur = Counter.most_common(50) 
     
-    #print(most_occur) 
+   
 
 
     #going through the most occred word list and split them into a list of words, and the number of times they show up. THis will help
@@ -249,40 +249,60 @@ def scrape():
         words.append(item[0])
         counts.append(item[1])
 
-
-    #print our list of words
-    #print(words)
-    #print our list of counts 
-    #print(counts)
-
-
+    #set variables to global for use outside this function
+    global most_spoken
     most_spoken = counts
+    global final_words
     final_words = words
 
-    #plt.pie(most_spoken, labels=final_words, startangle=90, autopct='%.1f%%', radius=1)
-    #plt.title('Offender Final Words', loc= "left")
-    #fig = plt.gcf()
-    #fig.set_size_inches(13 ,13)
-    #plt.show()
-
-   
+    #set dictionary to global 
+    global d
     d = {'Most_Spoken_Words': final_words,'Count_of_Words':most_spoken}
-
+    #create dataframe from dictionary
     df = pd.DataFrame(d)
 
-    global data
-    data = df.to_json(orient='index')
+    #create database connection, 
+    db = SQLAlchemy(app)
+    engine = create_engine('postgresql://postgres:Aqrt3456@localhost:5432/Texas')
+
+    #create db class
+    class Texas(db.Model):
+        __tablename__ = 'words'
+        id = db.Column('index', db.Integer, primary_key=True)
+        words1 = db.Column('Most_Spoke_Words', db.Unicode)
+        counts1 = db.Column('Count_of_Words', db.Integer)
+
+        def __init__(self, id, words1, counts1):
+            self.id = id
+            self.words1 = words1
+            self.counts1 = counts1
+
+    #call the class texas, and tell it to drop the table. Pass engine as an arguement
+    Texas.__table__.drop(engine)
+
+    #pump dataframe to postgres sql database
+    df.to_sql('words', engine)
+
+    return render_template('scrape.html')
+
+@app.route("/json")
+def json():
+
+
 
     return jsonify(d)
 
+@app.route("/pie", methods=["GET"])
 
-
-@app.route("/pie")
-def chart():
+def pie():
+    
     return render_template('pie.html')
+
+    
 
 
 
 if __name__ == "__main__":
+    
     app.run()
-
+    
