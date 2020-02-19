@@ -2,6 +2,7 @@
 
 Check out the app in action. 
 https://github.com/Ghernandez1991/Texas-Death-Row/blob/master/image/bandicam%202020-02-19%2013-34-20-743.mp4
+---------------------------------------------------------------------------------------------------------------------
 #note- still working on deploying the app. Due to issues with selenium webdriver/http time out on heroku, this app may not be deployable on their platform. Currently investigating AWS or Azure. 
 
 
