@@ -1,7 +1,7 @@
 # Texas-Death-Row
 
 Check out the app in action. 
-https://youtu.be/q3u8Hoxm214
+https://youtu.be/nlKY6kUIcBY
 ---------------------------------------------------------------------------------------------------------------------
 #note- still working on deploying the app. Due to issues with selenium webdriver/http time out on heroku, this app may not be deployable on their platform. Currently investigating AWS or Azure. 
 
