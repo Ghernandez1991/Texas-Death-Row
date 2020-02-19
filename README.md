@@ -1,7 +1,7 @@
 # Texas-Death-Row
 
 Check out the app in action. 
-image/bandicam 2020-02-19 13-34-20-743.mp4
+
 
 
 ![Alt text](image/table.png?raw=true "Optional Title")
