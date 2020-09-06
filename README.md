@@ -1,6 +1,9 @@
 # Texas-Death-Row
 
-Check out the app in action. 
+Check out the App in action. 
+https://texas-deathrow-dashboard.herokuapp.com/
+
+Check out the webscraper in action. 
 https://youtu.be/nlKY6kUIcBY
 ---------------------------------------------------------------------------------------------------------------------
 #note- still working on deploying the app. Due to issues with selenium webdriver/http time out on heroku, this app may not be deployable on their platform. Currently investigating AWS or Azure. 
