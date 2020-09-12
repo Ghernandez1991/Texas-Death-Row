@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Scrape Complete</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
+    <style>
+    ol {
+color: darkred;
+}
+body,.container,#tester {
+  
+  background-color: #000105;
+  
+}    
+    
+    
+    
+    </style>
+</head>
+
+
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><font color="red">Navbar</font></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/json"><font color="red">/Top_Words</font></a>
+        </li>
+       
+        <li class="nav-item">
+          <a class="nav-link" href="/pie"><font color="red">/Pie</font></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/offenders"><font color="red">/Offenders</font></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/top_ten"><font color="red">/Top_Ten</font></a>
+        </li>
+
+      </ul>
+      
+    </div>
+  </nav>
+
+    <h1><font color="red">Scrape Complete: Please visit your preferred route</font></h1>
+    <div class="container">
+        <div class="row">
+          <ol>/Top_Words for word data api</ol>
+         <ol>/Pie for death row dashboard</ol>
+         <ol>/Offenders for offender data api</ol>
+         <ol>/Top_Ten for county data api</ol>
+          <div class="col-sm">
+            
+          </div>
+          <div class="col-sm">
+            
+          </div>
+        </div>
+      </div>
+      <div id="tester" style="width:600px;height:250px;"></div>
+</body>
+</html>
