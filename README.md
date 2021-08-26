@@ -47,4 +47,3 @@ Choropleth.py gathers FIPS state/county codes for Texas and creates a dataframe 
 ![Alt text](image/average_age_by_race.PNG?raw=true "Optional Title")
 
 
-![Alt text](image/race_of_offenders.PNG?raw=true "Optional Title")
