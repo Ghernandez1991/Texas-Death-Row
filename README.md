@@ -10,7 +10,7 @@ Check out the Texas Department of Criminal Justice website.
 https://www.tdcj.texas.gov/death_row/dr_executed_offenders.html
 
 
-Check out choropleth chart. 
+Check out the choropleth chart. 
 https://ghernandez1991.github.io/Texas-Death-Row/
 
 ---------------------------------------------------------------------------------------------------------------------
